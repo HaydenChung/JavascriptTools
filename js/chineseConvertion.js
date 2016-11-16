@@ -3,9 +3,9 @@
   * 一個簡單的繁簡轉換功能.
   * 使用例子:   
   * 
-  * 
   * var translate = new translation('字庫路徑');
   * translate->convert('來源','輸出');
+  *
   *
   * @param string '字庫路徑' 字庫本身須為.js格式.
   * @param object '來源'     接受DOM元素.
