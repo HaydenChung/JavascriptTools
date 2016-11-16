@@ -16,7 +16,7 @@ try
 		{
 			case (typeof XMLHttpRequest  !== 'undefined'): temp = new XMLHttpRequest(); break;
 			case (typeof ActiveXObject  !== 'undefined'): temp = new ActiveXObject("Microsoft.XMLHTTP");; break;
-			default: throw 'Ajax is not supported';
+			default: throw 'Ajax not supported';
 		
 		}
 	}

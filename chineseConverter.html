@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>繁簡轉換測試</title>
+<style>
+div { margin:10rem 5rem; }
+.btn { background-color:grey; display:inline-block; margin:1rem; padding:0.5rem; color:white; cursor:pointer; border-radius:.2rem;}
+textarea { margin:1rem 0; width:50rem; height:5rem; }
+</style>
+</head>
+
+<body>
+
+<div id="traditionChinese">
+<h3>這部份是繁體字</h3>
+<br>
+<span>傳統漢字，是指在未使用簡化字的使用中文的地區使用的漢字，包括中國大陸、新加坡等地漢字簡化之前使用的漢字和台灣、香港、澳門等地目前使用的漢字。從漢字簡化和中文資訊處理的角度來看，傳統漢字包含繁體字（英語：unsimplified Hanzi，unsimplified Chinese characters）和傳承字（英語：traditional Hanzi、traditional Chinese characters）兩部分。在實際生活中談到的繁體字，實際上是指繁體字和傳承字的集合。使用傳統漢字的中華民國規定了正體字是國字的標準。</span>
+<br>
+</div>
+
+<div id="simplifiedChinese">
+<h3>这部份是简体字</h3>
+<br>
+<span>简化字，民间俗称简体字，这一体系常被称为简体中文（英语：Simplified Chinese），其简化字形来自草书楷化或文献中笔画简单的俗字丶异体字丶古字丶假借字，但也有很多是民间流行的写法。同时，也有很多汉字没有简化，如：「工欲善其事，必先利其器」，千年以来字体皆未改变，称为传承字丶正体字，而同时共用的就称为传统汉字。</span>
+<br>
+</div>
+
+<hr>
+
+<div style="margin:2rem 5rem;">
+<span class='btn' id='spBtn'>轉簡體</span><span class='btn' id='trBtn'>轉繁體</span><span class='btn' id='default'>還原</span>
+</div>
+
+<script src="js/chineseConvertion.js"></script>
+<script>
+	let trChinese = document.querySelector('#traditionChinese');
+	let spChinese = document.querySelector('#simplifiedChinese');
+	let toSp = new translation('chineseDict/opencc_spC.js');
+	let toTr = new translation('chineseDict/opencc_trC.js');
+
+	document.querySelector('#spBtn').addEventListener('click',toSp.convert.bind(toSp,trChinese,'return'));
+	document.querySelector('#trBtn').addEventListener('click',toTr.convert.bind(toTr,spChinese,'return'));
+	document.querySelector('#default').addEventListener('click',function(){toTr.convert(trChinese); toSp.convert(spChinese);});
+
+</script>
+</body>
