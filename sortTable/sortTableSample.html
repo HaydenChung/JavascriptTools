@@ -2,23 +2,893 @@
 <head>
 <title>Sorting table sample</title>
 <style>
-th { background-color:grey; color:white; cursor:pointer; }
+th 			{ background-color:grey; color:white; cursor:pointer; }
+.headBtn	{ background-color:grey; display:inline-block; padding:0.5rem; cursor:pointer; border-radius:0.8rem 0.8rem 0 0; box-shadow: -4px 0 0 black; color:white; }
+#btnB		{ background-color:#F2E4D7; color:black; }
+.bar 		{ width:100%; height:2rem; background-color:grey; box-shadow: -4px 0 0 black; border-radius:0 0 .8rem 0; }
+#wrapper	{   width:1000px; margin:2rem; }
+#field		{	box-sizing: border-box; border-left:.5rem grey solid; box-shadow: -4px 0 0 black;	padding:1rem;	}
+#header 	{ display:inline-block; }
 </style>
 </head>
 
 <body>
 
+<h5>*click on headers to sort.</h5>
+<div id='wrapper'>
+<div id="header">
+<div class='headBtn' id="btnA">Sample From</div><div class="headBtn" id="btnB">Real life situation(A job list from HKSAR Labour Department)</div>
+<div class=bar></div>
+</div>
+<div id="field">
+<div id='formA'>
 <div id="divResultSQL" style="display: block;"><div style="padding:10px;"><div style="margin-bottom:10px;">Number of Records: 77</div><table class="w3-table-all notranslate"><tbody><tr><th>ProductID</th><th>ProductName</th><th>SupplierID</th><th>CategoryID</th><th>Unit</th><th>Price</th></tr><tr><td>1</td><td>Chais</td><td>1</td><td>1</td><td>10 boxes x 20 bags</td><td>18</td></tr><tr><td>2</td><td>Chang</td><td>1</td><td>1</td><td>24 - 12 oz bottles</td><td>19</td></tr><tr><td>3</td><td>Aniseed Syrup</td><td>1</td><td>2</td><td>12 - 550 ml bottles</td><td>10</td></tr><tr><td>4</td><td>Chef Anton's Cajun Seasoning</td><td>2</td><td>2</td><td>48 - 6 oz jars</td><td>22</td></tr><tr><td>5</td><td>Chef Anton's Gumbo Mix</td><td>2</td><td>2</td><td>36 boxes</td><td>21.35</td></tr><tr><td>6</td><td>Grandma's Boysenberry Spread</td><td>3</td><td>2</td><td>12 - 8 oz jars</td><td>25</td></tr><tr><td>7</td><td>Uncle Bob's Organic Dried Pears</td><td>3</td><td>7</td><td>12 - 1 lb pkgs.</td><td>30</td></tr><tr><td>8</td><td>Northwoods Cranberry Sauce</td><td>3</td><td>2</td><td>12 - 12 oz jars</td><td>40</td></tr><tr><td>9</td><td>Mishi Kobe Niku</td><td>4</td><td>6</td><td>18 - 500 g pkgs.</td><td>97</td></tr><tr><td>10</td><td>Ikura</td><td>4</td><td>8</td><td>12 - 200 ml jars</td><td>31</td></tr><tr><td>11</td><td>Queso Cabrales</td><td>5</td><td>4</td><td>1 kg pkg.</td><td>21</td></tr><tr><td>12</td><td>Queso Manchego La Pastora</td><td>5</td><td>4</td><td>10 - 500 g pkgs.</td><td>38</td></tr><tr><td>13</td><td>Konbu</td><td>6</td><td>8</td><td>2 kg box</td><td>6</td></tr><tr><td>14</td><td>Tofu</td><td>6</td><td>7</td><td>40 - 100 g pkgs.</td><td>23.25</td></tr><tr><td>15</td><td>Genen Shouyu</td><td>6</td><td>2</td><td>24 - 250 ml bottles</td><td>15.5</td></tr><tr><td>16</td><td>Pavlova</td><td>7</td><td>3</td><td>32 - 500 g boxes</td><td>17.45</td></tr><tr><td>17</td><td>Alice Mutton</td><td>7</td><td>6</td><td>20 - 1 kg tins</td><td>39</td></tr><tr><td>18</td><td>Carnarvon Tigers</td><td>7</td><td>8</td><td>16 kg pkg.</td><td>62.5</td></tr><tr><td>19</td><td>Teatime Chocolate Biscuits</td><td>8</td><td>3</td><td>10 boxes x 12 pieces</td><td>9.2</td></tr><tr><td>20</td><td>Sir Rodney's Marmalade</td><td>8</td><td>3</td><td>30 gift boxes</td><td>81</td></tr><tr><td>21</td><td>Sir Rodney's Scones</td><td>8</td><td>3</td><td>24 pkgs. x 4 pieces</td><td>10</td></tr><tr><td>22</td><td>Gustaf's Kn踄kebr鐰</td><td>9</td><td>5</td><td>24 - 500 g pkgs.</td><td>21</td></tr><tr><td>23</td><td>Tunnbr鐰</td><td>9</td><td>5</td><td>12 - 250 g pkgs.</td><td>9</td></tr><tr><td>24</td><td>Guaran� Fant嫳tica</td><td>10</td><td>1</td><td>12 - 355 ml cans</td><td>4.5</td></tr><tr><td>25</td><td>NuNuCa Nu�-Nougat-Creme</td><td>11</td><td>3</td><td>20 - 450 g glasses</td><td>14</td></tr><tr><td>26</td><td>Gumb酺 Gummib酺chen</td><td>11</td><td>3</td><td>100 - 250 g bags</td><td>31.23</td></tr><tr><td>27</td><td>Schoggi Schokolade</td><td>11</td><td>3</td><td>100 - 100 g pieces</td><td>43.9</td></tr><tr><td>28</td><td>R飉sle Sauerkraut</td><td>12</td><td>7</td><td>25 - 825 g cans</td><td>45.6</td></tr><tr><td>29</td><td>Th僡inger Rostbratwurst</td><td>12</td><td>6</td><td>50 bags x 30 sausgs.</td><td>123.79</td></tr><tr><td>30</td><td>Nord-Ost Matjeshering</td><td>13</td><td>8</td><td>10 - 200 g glasses</td><td>25.89</td></tr><tr><td>31</td><td>Gorgonzola Telino</td><td>14</td><td>4</td><td>12 - 100 g pkgs</td><td>12.5</td></tr><tr><td>32</td><td>Mascarpone Fabioli</td><td>14</td><td>4</td><td>24 - 200 g pkgs.</td><td>32</td></tr><tr><td>33</td><td>Geitost</td><td>15</td><td>4</td><td>500 g</td><td>2.5</td></tr><tr><td>34</td><td>Sasquatch Ale</td><td>16</td><td>1</td><td>24 - 12 oz bottles</td><td>14</td></tr><tr><td>35</td><td>Steeleye Stout</td><td>16</td><td>1</td><td>24 - 12 oz bottles</td><td>18</td></tr><tr><td>36</td><td>Inlagd Sill</td><td>17</td><td>8</td><td>24 - 250 g jars</td><td>19</td></tr><tr><td>37</td><td>Gravad lax</td><td>17</td><td>8</td><td>12 - 500 g pkgs.</td><td>26</td></tr><tr><td>38</td><td>C矌e de Blaye</td><td>18</td><td>1</td><td>12 - 75 cl bottles</td><td>263.5</td></tr><tr><td>39</td><td>Chartreuse verte</td><td>18</td><td>1</td><td>750 cc per bottle</td><td>18</td></tr><tr><td>40</td><td>Boston Crab Meat</td><td>19</td><td>8</td><td>24 - 4 oz tins</td><td>18.4</td></tr><tr><td>41</td><td>Jack's New England Clam Chowder</td><td>19</td><td>8</td><td>12 - 12 oz cans</td><td>9.65</td></tr><tr><td>42</td><td>Singaporean Hokkien Fried Mee</td><td>20</td><td>5</td><td>32 - 1 kg pkgs.</td><td>14</td></tr><tr><td>43</td><td>Ipoh Coffee</td><td>20</td><td>1</td><td>16 - 500 g tins</td><td>46</td></tr><tr><td>44</td><td>Gula Malacca</td><td>20</td><td>2</td><td>20 - 2 kg bags</td><td>19.45</td></tr><tr><td>45</td><td>R鷤ede sild</td><td>21</td><td>8</td><td>1k pkg.</td><td>9.5</td></tr><tr><td>46</td><td>Spegesild</td><td>21</td><td>8</td><td>4 - 450 g glasses</td><td>12</td></tr><tr><td>47</td><td>Zaanse koeken</td><td>22</td><td>3</td><td>10 - 4 oz boxes</td><td>9.5</td></tr><tr><td>48</td><td>Chocolade</td><td>22</td><td>3</td><td>10 pkgs.</td><td>12.75</td></tr><tr><td>49</td><td>Maxilaku</td><td>23</td><td>3</td><td>24 - 50 g pkgs.</td><td>20</td></tr><tr><td>50</td><td>Valkoinen suklaa</td><td>23</td><td>3</td><td>12 - 100 g bars</td><td>16.25</td></tr><tr><td>51</td><td>Manjimup Dried Apples</td><td>24</td><td>7</td><td>50 - 300 g pkgs.</td><td>53</td></tr><tr><td>52</td><td>Filo Mix</td><td>24</td><td>5</td><td>16 - 2 kg boxes</td><td>7</td></tr><tr><td>53</td><td>Perth Pasties</td><td>24</td><td>6</td><td>48 pieces</td><td>32.8</td></tr><tr><td>54</td><td>Tourti鋨e</td><td>25</td><td>6</td><td>16 pies</td><td>7.45</td></tr><tr><td>55</td><td>P漮� chinois</td><td>25</td><td>6</td><td>24 boxes x 2 pies</td><td>24</td></tr><tr><td>56</td><td>Gnocchi di nonna Alice</td><td>26</td><td>5</td><td>24 - 250 g pkgs.</td><td>38</td></tr><tr><td>57</td><td>Ravioli Angelo</td><td>26</td><td>5</td><td>24 - 250 g pkgs.</td><td>19.5</td></tr><tr><td>58</td><td>Escargots de Bourgogne</td><td>27</td><td>8</td><td>24 pieces</td><td>13.25</td></tr><tr><td>59</td><td>Raclette Courdavault</td><td>28</td><td>4</td><td>5 kg pkg.</td><td>55</td></tr><tr><td>60</td><td>Camembert Pierrot</td><td>28</td><td>4</td><td>15 - 300 g rounds</td><td>34</td></tr><tr><td>61</td><td>Sirop d'廨able</td><td>29</td><td>2</td><td>24 - 500 ml bottles</td><td>28.5</td></tr><tr><td>62</td><td>Tarte au sucre</td><td>29</td><td>3</td><td>48 pies</td><td>49.3</td></tr><tr><td>63</td><td>Vegie-spread</td><td>7</td><td>2</td><td>15 - 625 g jars</td><td>43.9</td></tr><tr><td>64</td><td>Wimmers gute Semmelkn鐰el</td><td>12</td><td>5</td><td>20 bags x 4 pieces</td><td>33.25</td></tr><tr><td>65</td><td>Louisiana Fiery Hot Pepper Sauce</td><td>2</td><td>2</td><td>32 - 8 oz bottles</td><td>21.05</td></tr><tr><td>66</td><td>Louisiana Hot Spiced Okra</td><td>2</td><td>2</td><td>24 - 8 oz jars</td><td>17</td></tr><tr><td>67</td><td>Laughing Lumberjack Lager</td><td>16</td><td>1</td><td>24 - 12 oz bottles</td><td>14</td></tr><tr><td>68</td><td>Scottish Longbreads</td><td>8</td><td>3</td><td>10 boxes x 8 pieces</td><td>12.5</td></tr><tr><td>69</td><td>Gudbrandsdalsost</td><td>15</td><td>4</td><td>10 kg pkg.</td><td>36</td></tr><tr><td>70</td><td>Outback Lager</td><td>7</td><td>1</td><td>24 - 355 ml bottles</td><td>15</td></tr><tr><td>71</td><td>Fl黂emysost</td><td>15</td><td>4</td><td>10 - 500 g pkgs.</td><td>21.5</td></tr><tr><td>72</td><td>Mozzarella di Giovanni</td><td>14</td><td>4</td><td>24 - 200 g pkgs.</td><td>34.8</td></tr><tr><td>73</td><td>R鐰 Kaviar</td><td>17</td><td>8</td><td>24 - 150 g jars</td><td>15</td></tr><tr><td>74</td><td>Longlife Tofu</td><td>4</td><td>7</td><td>5 kg pkg.</td><td>10</td></tr><tr><td>75</td><td>Rh霵br酳 Klosterbier</td><td>12</td><td>1</td><td>24 - 0.5 l bottles</td><td>7.75</td></tr><tr><td>76</td><td>Lakkalik礵ri</td><td>23</td><td>1</td><td>500 ml </td><td>18</td></tr><tr><td>77</td><td>Original Frankfurter gr𤦂e So絽</td><td>12</td><td>2</td><td>12 boxes</td><td>13</td></tr></tbody></table></div></div>
+</div>
+</div>
+</div>
 
 <script src="js/sortTable.js"></script>
 
 <script>
-var headerList=document.querySelectorAll('tr>th');
+var headerList=document.querySelectorAll('#divResultSQL tr>th');
 
 for(let i=0,lenI=headerList.length;i<lenI;i++){
 	let current = new sortTable('tr:not(:first-child)',i);
 	headerList[i].addEventListener('click',current.settle);
 }
+
+</script>
+
+
+<!--======================================================================================-->
+<!--the following table was mostly use to test out the function,
+I fount it quite messy and hard to follow,
+you might ignore it and follow the strategy about to build your own group sorting feature.-->
+
+
+<div id='hiddenElm' style="display:none;" ><div id='formB'>
+<td colspan="4" background="/1/0/image/tc/job_list_white_wide_v2.jpg">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    
+                    <tbody><tr>
+                        <td rowspan="2">
+                            &nbsp;
+                        </td>
+                                            
+                        <td>
+                            <div class="var100 row">
+                                
+                                <table style="width:885" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody><tr>
+                                        <td style="width:1" rowspan="8">
+                                            <img alt="" src="/1/0/image/tc/spacer.gif" width="1" height="1">
+                                        </td>
+                                        <td style="width:8;height:24" align="center" nowrap="" bgcolor="#DCB594">                                            
+                                            <span class="gridview_title">
+                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_Label1">#</span>
+                                            </span>
+                                        </td>
+                                        <td style="width:90;height:24" align="center" nowrap="" bgcolor="#DCB594">         
+                                            <input type="image" name="ctl00$ContentPlaceHolder1$uxSortByPostDt" id="ctl00_ContentPlaceHolder1_uxSortByPostDt" title="空缺刊登日期由遠至近" src="../../../image/tc/job_sort1.jpg" alt="空缺刊登日期由遠至近" style="border-width:0px;height:12px;width:14px;">
+                                            
+                                            <span class="gridview_title">
+                                                <span id="ctl00_ContentPlaceHolder1_uxPostedDateLabel">刊登日期</span>
+                                            </span>
+                                        </td>
+                                        <td style="width:110" align="center" nowrap="" bgcolor="#DCB594" class="gridview_title">
+                                            
+                                            <span id="ctl00_ContentPlaceHolder1_uxOrdNoLabel">空缺編號</span>
+                                        </td>
+                                        <td style="width:125" align="center" nowrap="" bgcolor="#DCB594" class="gridview_title">
+                                            <span id="ctl00_ContentPlaceHolder1_uxJobTitleLabel">職位</span>
+                                        </td>
+                                        <td style="width:110" align="right" nowrap="" bgcolor="#DCB594">
+                                            <input type="image" name="ctl00$ContentPlaceHolder1$uxSortBySalary" id="ctl00_ContentPlaceHolder1_uxSortBySalary" title="薪酬(以月入計)由多至少" src="../../../image/tc/job_sort1_f2.jpg" alt="薪酬(以月入計)由多至少" style="border-width:0px;height:12px;width:14px;">
+                                            <span class="gridview_title">
+                                                <span id="ctl00_ContentPlaceHolder1_uxSalaryLabel">薪酬(港幣)</span>
+                                            </span> 
+                                        </td>
+                                        <td style="width:100" align="right" nowrap="" bgcolor="#DCB594" class="gridview_title">
+                                            
+                                            <span id="ctl00_ContentPlaceHolder1_uxWkLocLabel">工作地點</span>
+                                        </td>
+                                        <td style="width:72" align="center" nowrap="" bgcolor="#DCB594">
+                                            <input type="image" name="ctl00$ContentPlaceHolder1$uxSortByRelevExp" id="ctl00_ContentPlaceHolder1_uxSortByRelevExp" title="有關工作經驗由少至多" src="../../../image/tc/job_sort1.jpg" alt="有關工作經驗由少至多" style="border-width:0px;height:12px;width:14px;">
+                                            <span class="gridview_title">
+                                                <span id="ctl00_ContentPlaceHolder1_uxRelExpLabel">有關經驗</span>
+                                            </span>
+                                        </td>
+                                        <td style="width:110" align="center" nowrap="" bgcolor="#DCB594" class="gridview_title">
+                                            <input type="image" name="ctl00$ContentPlaceHolder1$uxSortByEduLvl" id="ctl00_ContentPlaceHolder1_uxSortByEduLvl" title="教育程度由低至高" src="../../../image/tc/job_sort1.jpg" alt="教育程度由低至高" style="border-width:0px;height:12px;width:14px;">
+                                            <span class="gridview_title">
+                                                <span id="ctl00_ContentPlaceHolder1_uxEduLvlLabel">教育程度</span>
+                                            </span>
+                                        </td>
+                                        <td style="width:1" rowspan="8">
+                                            <img alt="" src="/1/0/image/tc/spacer.gif" width="1" height="7">
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                                
+                                    </div></td></tr><tr>                       
+                                                            
+                                        <td colspan="9">
+                                            
+                                            <div id="uxJobListDetails">
+                                            <span class="var90">
+                                                <div>
+	<table cellspacing="0" border="0" id="ctl00_ContentPlaceHolder1_uxResult" style="border-style:None;width:885px;border-collapse:collapse;">
+		<tbody><tr style="background-color:White;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl02_uxRowNum" style="color:#333333;font-size:12px;">1</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    07/11/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl02$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl02_uxHiddenOrdNo" value="33-16-0017577">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl02$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl02_uxHiddenRowNum" value="1">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl02$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl02_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl02_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=dEpXa1F6K1Evc0pFUHJ4M3diQ042cFEwdGg5MWtOOGNKblJhZE5aeUhNST0=&amp;rownum=1&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">33-16-0017577</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl02_uxJobTitleDiv">
+                                                                        大中華商貿文化證書課程總監
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $60,000  (月薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    屯門
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    0  年
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    專上教育：碩士或博士課程
+                                                            </td>
+		</tr><tr style="background-color:#F2E4D7;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl03_uxRowNum" style="color:#333333;font-size:12px;">2</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    07/11/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl03$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl03_uxHiddenOrdNo" value="33-16-0017575">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl03$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl03_uxHiddenRowNum" value="2">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl03$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl03_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl03_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=dEpXa1F6K1Evc0xnNlhEdzJLMVVVNDRKYWtZQnZxcXMxNVR5RG5tN1R0QT0=&amp;rownum=2&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">33-16-0017575</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl03_uxJobTitleDiv">
+                                                                        大中華商貿文化證書課程導師
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $50,000  (月薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    屯門
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    0  年
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    專上教育：學位課程
+                                                            </td>
+		</tr><tr style="background-color:White;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl04_uxRowNum" style="color:#333333;font-size:12px;">3</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    08/11/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl04$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl04_uxHiddenOrdNo" value="33-16-0017593">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl04$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl04_uxHiddenRowNum" value="3">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl04$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl04_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl04_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=dEpXa1F6K1Evc0w0NG10NEp2SDFaZjNvRUZCQmduVS9PTk5EQkxTTGwrOD0=&amp;rownum=3&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">33-16-0017593</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl04_uxJobTitleDiv">
+                                                                        培訓導師(醫護)
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $230 - $270  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    觀塘,深水埗,屯門
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    5 年 
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    專上教育：文憑/證書課程
+                                                            </td>
+		</tr><tr style="background-color:#F2E4D7;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl05_uxRowNum" style="color:#333333;font-size:12px;">4</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    08/11/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl05$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl05_uxHiddenOrdNo" value="33-16-0017592">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl05$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl05_uxHiddenRowNum" value="4">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl05$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl05_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl05_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=dEpXa1F6K1Evc0x1N0x6dm5uazlYaXBwbGc2VHVBd1VKRGQ2UGI4dXIrYz0=&amp;rownum=4&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">33-16-0017592</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl05_uxJobTitleDiv">
+                                                                        培訓導師(陪月)
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $230  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    深水埗,屯門
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    5 年 
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    專上教育：文憑/證書課程
+                                                            </td>
+		</tr><tr style="background-color:White;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl06_uxRowNum" style="color:#333333;font-size:12px;">5</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    16/11/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl06$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl06_uxHiddenOrdNo" value="22-16-0087329">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl06$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl06_uxHiddenRowNum" value="5">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl06$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl06_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl06_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=NHgvbDhFY3dlNzZNYlF0VS9hbEpWMzFXUTBWSXlmZVM1QnFWT0FPa08rWT0=&amp;rownum=5&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">22-16-0087329</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl06_uxJobTitleDiv">
+                                                                        保安及物業管理基礎證書導師(兼職)
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $225 - $250  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    石硤尾
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    5 年 
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    專上教育：文憑/證書課程
+                                                            </td>
+		</tr><tr style="background-color:#F2E4D7;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl07_uxRowNum" style="color:#333333;font-size:12px;">6</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    11/11/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl07$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl07_uxHiddenOrdNo" value="35-16-0063832">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl07$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl07_uxHiddenRowNum" value="6">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl07$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl07_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl07_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=cnJtMys3U0svYXhwN0tMUkdVbEZmVGxnZmwvNHRjc2tlMzdlc21RejdnST0=&amp;rownum=6&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">35-16-0063832</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl07_uxJobTitleDiv">
+                                                                        豎琴導師
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $200 - $300  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    荃灣
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    2 年 
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    中五程度
+                                                            </td>
+		</tr><tr style="background-color:White;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl08_uxRowNum" style="color:#333333;font-size:12px;">7</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    25/10/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl08$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl08_uxHiddenOrdNo" value="35-16-0060594">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl08$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl08_uxHiddenRowNum" value="7">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl08$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl08_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl08_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=cnJtMys3U0svYXlsSEdxcEFLOFVFY2QxRSsxODBqaUhyWlJISFNkSGFWcz0=&amp;rownum=7&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">35-16-0060594</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl08_uxJobTitleDiv">
+                                                                        小提琴/中提琴導師
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $140 - $250  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    荃灣
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    2 年 
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    中五程度
+                                                            </td>
+		</tr><tr style="background-color:#F2E4D7;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl09_uxRowNum" style="color:#333333;font-size:12px;">8</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    19/10/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl09$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl09_uxHiddenOrdNo" value="13-16-0028944">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl09$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl09_uxHiddenRowNum" value="8">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl09$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl09_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl09_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=ckNDajNqSnNJTGVDcG1hZnJVUEtmSkxTbmtkN2VKMzAyOUFWVitGKzJrND0=&amp;rownum=8&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">13-16-0028944</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl09_uxJobTitleDiv">
+                                                                        在學校和補習中心興趣班導師
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $250  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    旺角,馬鞍山,荃灣
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    0  年
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    中五程度
+                                                            </td>
+		</tr><tr style="background-color:White;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl10_uxRowNum" style="color:#333333;font-size:12px;">9</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    15/11/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl10$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl10_uxHiddenOrdNo" value="21-16-0045964">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl10$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl10_uxHiddenRowNum" value="9">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl10$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl10_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl10_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=NlVTalBtUmpjbDk1ZG50Q0JTaVN2THl6UFl3Mm85ZmhLZEZrejIraVEzQT0=&amp;rownum=9&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">21-16-0045964</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl10_uxJobTitleDiv">
+                                                                        代課教師
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $1,345  (日薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    觀塘
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    0  年
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    專上教育：學位課程
+                                                            </td>
+		</tr><tr style="background-color:#F2E4D7;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl11_uxRowNum" style="color:#333333;font-size:12px;">10</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    08/11/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl11$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl11_uxHiddenOrdNo" value="32-16-0030973">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl11$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl11_uxHiddenRowNum" value="10">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl11$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl11_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl11_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=TC9KMFRnWVZXeENVa1RTcHhjRXhMYk1iQkFRK2NzaklEQ0ZsR0twbUNxQT0=&amp;rownum=10&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">32-16-0030973</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl11_uxJobTitleDiv">
+                                                                        日間兼職教導員(特式餐飲及美食製作)
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $215 - $235  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    將軍澳,馬鞍山,屯門,天水圍,港九新界
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    5 年 
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    專上教育：副學位課程
+                                                            </td>
+		</tr><tr style="background-color:White;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl12_uxRowNum" style="color:#333333;font-size:12px;">11</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    08/11/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl12$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl12_uxHiddenOrdNo" value="32-16-0030972">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl12$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl12_uxHiddenRowNum" value="11">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl12$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl12_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl12_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=TC9KMFRnWVZXeERXdloxUjBJSTdnM1hhK1ppQnJRWEtvT2lpWGVSMEZoTT0=&amp;rownum=11&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">32-16-0030972</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl12_uxJobTitleDiv">
+                                                                        日間兼職教導員(空調裝配)
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $215 - $235  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    將軍澳,馬鞍山,屯門,天水圍,港九新界
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    5 年 
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    專上教育：副學位課程
+                                                            </td>
+		</tr><tr style="background-color:#F2E4D7;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl13_uxRowNum" style="color:#333333;font-size:12px;">12</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    04/11/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl13$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl13_uxHiddenOrdNo" value="22-16-0084565">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl13$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl13_uxHiddenRowNum" value="12">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl13$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl13_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl13_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=NHgvbDhFY3dlNzdHY0hkUlRqa2NhSXdyUmpQRXBDbGxGTy81d1FPWExJQT0=&amp;rownum=12&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">22-16-0084565</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl13_uxJobTitleDiv">
+                                                                        幼兒班導師 (兼職)
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $100 - $300  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    香港島,九龍半島,新界
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    1 年 
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    專上教育：學位課程
+                                                            </td>
+		</tr><tr style="background-color:White;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl14_uxRowNum" style="color:#333333;font-size:12px;">13</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    25/10/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl14$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl14_uxHiddenOrdNo" value="21-16-0043204">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl14$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl14_uxHiddenRowNum" value="13">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl14$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl14_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl14_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=NlVTalBtUmpjbC9IVzNMSFBkQmNFOTgvanZJdERrbGk3Rm1JemVYZ1Q0az0=&amp;rownum=13&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">21-16-0043204</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl14_uxJobTitleDiv">
+                                                                        芭蕾舞舞蹈導師
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $120 - $250  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    觀塘,藍田,將軍澳,西貢,火炭
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    5 年 
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    專上教育：文憑/證書課程
+                                                            </td>
+		</tr><tr style="background-color:#F2E4D7;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl15_uxRowNum" style="color:#333333;font-size:12px;">14</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    03/11/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl15$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl15_uxHiddenOrdNo" value="23-16-0041549">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl15$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl15_uxHiddenRowNum" value="14">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl15$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl15_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl15_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=eG91WC9rKytSdWRULzhkSWh1aHZ4K3B3a0VBUVFiQThXZGMrU2RtOGVOZz0=&amp;rownum=14&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">23-16-0041549</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl15_uxJobTitleDiv">
+                                                                        音樂導師
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $110 - $480  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    港九新界
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    0  年
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    中五程度
+                                                            </td>
+		</tr><tr style="background-color:White;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl16_uxRowNum" style="color:#333333;font-size:12px;">15</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    26/10/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl16$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl16_uxHiddenOrdNo" value="11-16-0046068">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl16$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl16_uxHiddenRowNum" value="15">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl16$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl16_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl16_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=dVU2YTFDZ2VpbWRjcmRTTXRoanFsVmJwRWpYTEJ1c3B2bHkwZVE2R3BtQT0=&amp;rownum=15&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">11-16-0046068</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl16_uxJobTitleDiv">
+                                                                        流行/爵士鼓老師
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $140 - $300  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    中環
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    0  年
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    專上教育：文憑/證書課程
+                                                            </td>
+		</tr><tr style="background-color:#F2E4D7;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl17_uxRowNum" style="color:#333333;font-size:12px;">16</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    28/10/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl17$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl17_uxHiddenOrdNo" value="22-16-0082787">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl17$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl17_uxHiddenRowNum" value="16">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl17$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl17_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl17_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=NHgvbDhFY3dlNzQzTWIzcDVHdnF5ZzRHeDFSNWk5K3dOL2k3S3BQcHRSQT0=&amp;rownum=16&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">22-16-0082787</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl17_uxJobTitleDiv">
+                                                                        泰語及對外漢語導師(泰語)
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $150 - $200  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    佐敦
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    0  年
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    專上教育：文憑/證書課程
+                                                            </td>
+		</tr><tr style="background-color:White;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl18_uxRowNum" style="color:#333333;font-size:12px;">17</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    16/11/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl18$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl18_uxHiddenOrdNo" value="35-16-0065287">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl18$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl18_uxHiddenRowNum" value="17">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl18$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl18_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl18_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=cnJtMys3U0svYXppM2hvTE5NZ3JPa2I2cVMwZTBkenArc2lCMnN3VStzbz0=&amp;rownum=17&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">35-16-0065287</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl18_uxJobTitleDiv">
+                                                                        長笛導師
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $150 - $250  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    荃灣
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    2 年 
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    中五程度
+                                                            </td>
+		</tr><tr style="background-color:#F2E4D7;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl19_uxRowNum" style="color:#333333;font-size:12px;">18</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    16/11/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl19$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl19_uxHiddenOrdNo" value="13-16-0031524">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl19$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl19_uxHiddenRowNum" value="18">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl19$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl19_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl19_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=ckNDajNqSnNJTGU1MTNzdFBBOTFPTkRpOUs3Yk9HT25CWFFyLzZxbWZvRT0=&amp;rownum=18&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">13-16-0031524</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl19_uxJobTitleDiv">
+                                                                        到學校和在補習中心和興趣班導師**
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $200 - $400  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    西環,黃大仙,粉嶺
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    0  年
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    中五程度
+                                                            </td>
+		</tr><tr style="background-color:White;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl20_uxRowNum" style="color:#333333;font-size:12px;">19</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    20/10/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl20$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl20_uxHiddenOrdNo" value="13-16-0029113">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl20$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl20_uxHiddenRowNum" value="19">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl20$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl20_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl20_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=ckNDajNqSnNJTGR6eG1mNE51L3J0SDYwV1lxOUVUUnM4QjZkWkVrcW5PMD0=&amp;rownum=19&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">13-16-0029113</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl20_uxJobTitleDiv">
+                                                                        兼職導師
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $250  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    上環
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    5 年 
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    專上教育：學位課程
+                                                            </td>
+		</tr><tr style="background-color:#F2E4D7;height:30px;">
+			<td class="col6" align="center" style="width:8px;">
+                                                                &nbsp;&nbsp;<span id="ctl00_ContentPlaceHolder1_uxResult_ctl21_uxRowNum" style="color:#333333;font-size:12px;">20</span>
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:90px;">
+                                                                
+                                                                    26/10/2016
+                                                            </td><td class="col6" align="center">
+                                                                
+                                                                
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl21$uxHiddenOrdNo" id="ctl00_ContentPlaceHolder1_uxResult_ctl21_uxHiddenOrdNo" value="36-16-0020607">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl21$uxHiddenRowNum" id="ctl00_ContentPlaceHolder1_uxResult_ctl21_uxHiddenRowNum" value="20">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$uxResult$ctl21$uxHiddenMaxRow" id="ctl00_ContentPlaceHolder1_uxResult_ctl21_uxHiddenMaxRow" value="1425">    
+                                                                <a id="ctl00_ContentPlaceHolder1_uxResult_ctl21_uxOrdNoLinkBtn" class="SelectedItem" href="../jobcard/jobcard.aspx?ordno=ZHl0VHZOVkhKSXlSQlNvZWpJT3BqYjZ0YXVKMjduT3BtTGVNenFMViszcz0=&amp;rownum=20&amp;maxrow=1425&amp;SearchFor=jobtype&amp;id=26&amp;start=&amp;SortBy=salary_desc&amp;from=" style="font-size:12px;">36-16-0020607</a>
+                                                                
+                                                                
+                                                                
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:125px;">
+                                                                
+                                                                    <div id="ctl00_ContentPlaceHolder1_uxResult_ctl21_uxJobTitleDiv">
+                                                                        合約鋼琴及樂理導師
+                                                                    </div>
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:110px;">
+                                                                
+                                                                    $150 - $350  (時薪)
+                                                            </td><td class="col6 gridview_sortlist" align="right" style="width:100px;">
+                                                                
+                                                                    元朗
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:72px;">
+                                                                
+                                                                    2 年 
+                                                            </td><td class="col6 gridview_sortlist" align="center" style="width:140px;">
+                                                                
+                                                                    中七程度
+                                                            </td>
+		</tr>
+	</tbody></table>
+</div>
+                                            </span>
+                                            </div>
+                                            
+                                            <br>
+                                            <div class="var100 row" style="text-align: center;">
+                                            
+                                                <span style="color:#333333; font-size:13px; font-weight:bold;">
+                                                    <span id="ctl00_ContentPlaceHolder1_Page1FtrLabel">第</span>
+                                                </span>
+                                            
+                                                <span>
+                                                    
+                                                    <span id="ctl00_ContentPlaceHolder1_uxPageNumFtr" style="font-size: 11px; color: #333333;
+                                                        text-decoration: none;">&nbsp;<span style="font-size:12px; color:#000000; padding:2px 5px 2px 5px; border:#666666 dotted 1px;  background-color:#E8D479; line-height:18px;">1</span>&nbsp;&nbsp;<a href="joblist.aspx?SearchFor=jobtype&amp;ID=26&amp;SortBy=post_dt_desc&amp;highlight=OE00U1JldnBJYjA9&amp;from=&amp;start=20" style="font-size:12px; color:#000000; padding:2px 5px 2px 5px; border:#666666 dotted 1px; text-decoration:none; line-height:18px;">2</a>&nbsp;&nbsp;<a href="joblist.aspx?SearchFor=jobtype&amp;ID=26&amp;SortBy=post_dt_desc&amp;highlight=OE00U1JldnBJYjA9&amp;from=&amp;start=40" style="font-size:12px; color:#000000; padding:2px 5px 2px 5px; border:#666666 dotted 1px; text-decoration:none; line-height:18px;">3</a>&nbsp;&nbsp;<a href="joblist.aspx?SearchFor=jobtype&amp;ID=26&amp;SortBy=post_dt_desc&amp;highlight=OE00U1JldnBJYjA9&amp;from=&amp;start=60" style="font-size:12px; color:#000000; padding:2px 5px 2px 5px; border:#666666 dotted 1px; text-decoration:none; line-height:18px;">4</a>&nbsp;&nbsp;<a href="joblist.aspx?SearchFor=jobtype&amp;ID=26&amp;SortBy=post_dt_desc&amp;highlight=OE00U1JldnBJYjA9&amp;from=&amp;start=80" style="font-size:12px; color:#000000; padding:2px 5px 2px 5px; border:#666666 dotted 1px; text-decoration:none; line-height:18px;">5</a>&nbsp;&nbsp;<a href="joblist.aspx?SearchFor=jobtype&amp;ID=26&amp;SortBy=post_dt_desc&amp;highlight=OE00U1JldnBJYjA9&amp;from=&amp;start=100" style="font-size:12px; color:#000000; padding:2px 5px 2px 5px; border:#666666 dotted 1px; text-decoration:none; line-height:18px;">6</a>&nbsp;&nbsp;<a href="joblist.aspx?SearchFor=jobtype&amp;ID=26&amp;SortBy=post_dt_desc&amp;highlight=OE00U1JldnBJYjA9&amp;from=&amp;start=20" style="font-size:12px; color:#000000; padding:2px 5px 2px 5px; border:#666666 dotted 1px; text-decoration:none; line-height:18px;">&gt;</a>&nbsp;&nbsp;<span style="font-size:12px; color:#000000; padding:2px 5px 2px 5px; border:#666666 dotted 1px; text-decoration:none; line-height:18px;"><a href="joblist.aspx?SearchFor=jobtype&amp;ID=26&amp;SortBy=post_dt_desc&amp;highlight=OE00U1JldnBJYjA9&amp;from=&amp;start=1420" style="font-size:11px; color:#333333; text-decoration:none;">&gt;&gt;</a></span>&nbsp;</span>
+                                                </span>
+                                                
+                                                <span style="color:#333333; font-size:13px; font-weight:bold;">
+                                                    <span id="ctl00_ContentPlaceHolder1_Page2FtrLabel">頁</span>
+                                                </span>
+                                            </div>
+                                            <br>
+                                            <div style="text-align: center;">
+                                                <p align="left" style="border-top: #CCCCCC solid 1px; width: 800px;">
+                                                    <br>
+
+                                                    <span class="var100 txt1" style="color: #333333;">
+                                                        <span id="ctl00_ContentPlaceHolder1_uxRemarkDetail">EA -- 代表私營職業介紹所為其客戶招聘員工的職位空缺，有興趣的求職者可直接聯絡該職業介紹所。<br>   ** -- 代表該職位的僱主有意聘請中年就業計劃參加者。<br>   ## -- 代表該職位為工作試驗計劃空缺。<br></span>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                            
+                        
+                    
+                    <tr>
+                <td background="/1/0/image/en/job_list_table7.jpg"><img alt="" src="/1/0/image/en/job_list_table6.jpg" width="15" height="28"></td>
+                <td colspan="2" background="/1/0/image/en/job_list_table7.jpg"></td>
+                <td><img alt="" src="/1/0/image/en/job_list_table8.jpg" width="23" height="28"></td>
+              </tr>
+                </tbody></table>
+            </td>
+</div></div>
+
+
+<script>
+let imageElm = document.querySelectorAll('img');
+for(let k=0,lenK=imageElm.length;k<lenK;k++){
+	imageElm[k].parentNode.removeChild(imageElm[k]);
+}
+
+let inputElm = document.querySelectorAll('input');
+for(let l=0,lenL=inputElm.length;l<lenL;l++){
+	inputElm[l].parentNode.removeChild(inputElm[l]);
+}
+
+//************************************************************************************
+
+
+var headerList2=document.querySelectorAll('.var100 table>tbody>tr>td');
+
+for(let j=0,lenJ=headerList2.length;j<lenJ-2;j++){
+	let current = new sortTable('#ctl00_ContentPlaceHolder1_uxResult tbody>tr',j);
+	headerList2[j+1].addEventListener('click',current.settle);
+	headerList2[j+1].style.cursor = 'pointer';
+}
+
+//************************************************************************************
+
+let formA=document.querySelector('#formA');
+let formB=document.querySelector('#formB');
+let field=document.querySelector('#field');
+let bar  =document.querySelector('.bar');
+
+document.querySelector('#btnA').addEventListener('click',function(e){ 
+	field.innerHTML=''; 
+	field.appendChild(formA);
+	let frameColor = window.getComputedStyle(e.target).backgroundColor;
+	field.style.borderColor = frameColor;
+	bar.style.backgroundColor = frameColor;
+});
+document.querySelector('#btnB').addEventListener('click',function(e){
+	field.innerHTML='';
+	field.appendChild(formB);
+	let frameColor = window.getComputedStyle(e.target).backgroundColor
+	field.style.borderColor = frameColor;
+	bar.style.backgroundColor = frameColor;
+});
 
 </script>
 
