@@ -20,9 +20,13 @@ var sortTable = function(rowElm,sortBy,order){
 	this.switch=1;
 
 	this.word = function(a,b){
+		console.log(a);
+		console.log(sortBy);
   		return (this.operator*(a['children'][sortBy]['innerText'].localeCompare(b['children'][sortBy]['innerText'])))*this.switch;
   	}.bind(this);
 	this.numeric = function(a,b){
+		console.log(a);
+		console.log(sortBy);
 		return (this.operator*(a['children'][sortBy]['innerText']-b['children'][sortBy]['innerText']))*this.switch;
 	}.bind(this);
 
@@ -30,6 +34,9 @@ var sortTable = function(rowElm,sortBy,order){
 	this.operator = order == false ? -1 : 1 ;
 	this.list = document.querySelectorAll(rowElm);
 	this.listArr = Array.prototype.slice.call(this.list);
+
+	console.log(this.list);
+	console.log(this.listArr);
   
  	this.method = isFinite(this.listArr[0]['children'][sortBy]['innerText']) ? this.numeric : this.word ;
 
