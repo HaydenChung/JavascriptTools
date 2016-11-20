@@ -15,7 +15,7 @@
  * 
  * @param  string               unit      Any time period longer than 'unit' will return as normal date format. Accepted : second,minute,hour,day,week,month,year and ago.
  * @param  string               lang      Langauge of the returning string. Accepted : chinese,english.
- * @param  string/htmlElement   element   CSS selector or html element that the function should transform.
+ * @param  string/htmlElement   element   CSS selector or html element that the function should transform,the source need to be in US date format(M-D-YYYY) or timestamp in milliseconds.
  *
  */
 
@@ -24,6 +24,7 @@
 var postedSince = function() {
 
 	this._element = '';
+	// Need a 0 second catcher,so it won't fall off grid if the time difference is less than 1 second.
 	this._unit = {'english':['second','second','minute','hour','day','week','month','year','ago'],
 				  'chinese':['秒','秒','分鐘','小時','天','週','月','年','前']};
 	this._seconds = [0,1,60,3600,86400,604800,2629744,31556926,Infinity];
@@ -38,6 +39,7 @@ var postedSince = function() {
 
 		var diff = Math.floor((Date.now()-input)/1000);
 
+		// The catcher that was mentioned about.
 		if(diff<1) return [0,0];
 
 		for(let j=0,lenJ=this._countStart;j<=lenJ;j++){
@@ -71,13 +73,15 @@ var postedSince = function() {
 		if(this._element instanceof NodeList||this._element instanceof HTMLCollection){
 
 		  for(var i=0,lenI=this._element.length;i<lenI;i++){
+
 				this._element[i]['innerText'] = this.wrapUp(this.posted(this._element[i]['innerText']));
-			  }
+			 }
 
-			}else{
-		  		this._element['innerText'] =  this.wrapUp(this.posted(this._element['innerText']));
-		  };
+		}else{
+
+		  	this._element['innerText'] =  this.wrapUp(this.posted(this._element['innerText']));
+		
+		};
 	}
-
 
 }

@@ -33,8 +33,8 @@ th 			{ background-color:grey; color:white; cursor:pointer; }
 var headerList=document.querySelectorAll('#divResultSQL tr>th');
 
 for(let i=0,lenI=headerList.length;i<lenI;i++){
-	let current = new sortTable('tr:not(:first-child)',i);
-	headerList[i].addEventListener('click',current.settle);
+	let currentI = new sortTable('tr:not(:first-child)',i);
+	headerList[i].addEventListener('click',currentI.settle);
 }
 
 </script>
@@ -863,8 +863,8 @@ for(let l=0,lenL=inputElm.length;l<lenL;l++){
 var headerList2=document.querySelectorAll('.var100 table>tbody>tr>td');
 
 for(let j=0,lenJ=headerList2.length;j<lenJ-2;j++){
-	let current = new sortTable('#ctl00_ContentPlaceHolder1_uxResult tbody>tr',j);
-	headerList2[j+1].addEventListener('click',current.settle);
+	let currentJ = new sortTable('#ctl00_ContentPlaceHolder1_uxResult tbody>tr',j);
+	headerList2[j+1].addEventListener('click',currentJ.settle);
 	headerList2[j+1].style.cursor = 'pointer';
 }
 
