@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Sorting post time sample</title>
+
+<meta charset="UTF-8" />
+<style>
+#wrapper { 
+	position: absolute;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width:38rem;
+}
+
+#intervalOne {	height:24rem; width:2px; background:grey; position:absolute; top: 50%; left:33%; transform:translate(0,-50%);}
+#intervalTwo {	height:24rem; width:2px; background:grey; position:absolute; top: 50%; right:33%; transform:translate(0,-50%);}
+td	{ width:33%; padding:1rem;  }
+td:nth-child(even) { text-align: right; }
+td:first-child	{ text-align:right; }
+input {  }
+</style>
+</head>
+
+<body>
+
+<div id='wrapper'>
+	<table>
+		<tr><th>Original</th><th>Return in chinese</th><th>Return in english</th></tr>
+		<tr><td class=label></td><td class=chineseVal id=mytd></td><td class=englishVal id=mytd></td></tr>
+		<tr><td class=label></td><td class=chineseVal id=mytd2></td><td class=englishVal id=mytd></td></tr>
+		<tr><td class=label></td><td class=chineseVal id=mytd3></td><td class=englishVal id=mytd></td></tr>
+		<tr><td class=label></td><td class=chineseVal id=mytd3></td><td class=englishVal id=mytd></td></tr>
+		<tr><td><input type='text' placeholder="MM/DD/YY"></td><td><span id="outputHan" >Currently only accept US dates format.</span></td><td><span id="outputEng" >And milliseconds.</span></td></tr>
+		<div id="intervalOne"></div><div id="intervalTwo"></div>
+	</table>
+</div>
+
+<br>
+
+
+<script src='js/postedSince.js'></script>
+<script>
+
+var textarea = document.querySelector('input');
+var outputField = document.querySelector('#outputHan');
+
+var tdGroup=document.querySelectorAll('td');
+var valGroup = document.querySelectorAll('.value');
+var time = Date.now();
+var diff = 59000;
+var sectionTime;
+
+for(let i=0,j=3,k=1,lenI=tdGroup.length-3;i<lenI;i++,j++){
+
+	if(j>2){
+		diff *= Math.pow(k,k);
+		sectionTime = new Date(time - diff).toLocaleString('en-US');
+		j=0; 
+		k++; 	
+
+	}
+		tdGroup[i].innerText = sectionTime;
+
+}
+
+/*********************************************************************************
+ *
+ * Example for postedSince.
+ *
+ */
+
+var chinese = new postedSince;
+var english = new postedSince;
+
+chinese.notBiggerThan('day').language('chinese').set('.chineseVal');
+english.notBiggerThan('day').set('.englishval');
+
+textarea.addEventListener('input',function(){ 
+    	outputField.innerText = textarea.value; 
+    	outputField.parentNode.nextSibling.firstChild.innerText = textarea.value; 
+    	chinese.notBiggerThan('ago').set('#outputHan');
+    	english.notBiggerThan('ago').set('#outputEng');
+    })
+
+</script>
+</body>
