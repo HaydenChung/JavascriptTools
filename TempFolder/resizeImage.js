@@ -10,8 +10,7 @@
 function reizeImg(source){
 	let img = typeof source == 'string' ? document.querySelectorAll(source) : source ;
 
-//The result of querySelectorAll(source) and image element are both objects,I need a workaround to figure if it only contain a single image.
-	if(img[0]){
+	if(img instanceof NodeList||img instanceof HTMLCollection){
 		for(let i=0,lenI=img.length;i<lenI;i++){
 			resize(img[i]);
 		}

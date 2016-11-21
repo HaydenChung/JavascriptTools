@@ -8,7 +8,7 @@ if(error.length!==0)
 
 function startAjax()
 {
-var temp="";
+var xhttp="";
 
 try
 	{
@@ -25,12 +25,13 @@ try
 		window.error= {'ajax':err};
 	}
 
-return temp;
+return xhttp;
 
 }
 
 function getAjax(url,callback,method,postvalue) //method default to GET.
 {
+	
 
 var xhttp=new startAjax();
 
