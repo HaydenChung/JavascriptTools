@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>Sorting table sample</title>
+    <meta charset="UTF-8" />
 <style>
 th 			{ background-color:grey; color:white; cursor:pointer; }
 .headBtn	{ background-color:grey; display:inline-block; padding:0.5rem; cursor:pointer; border-radius:0.8rem 0.8rem 0 0; box-shadow: -4px 0 0 black; color:white; }
@@ -32,8 +33,8 @@ th 			{ background-color:grey; color:white; cursor:pointer; }
 <script>
 var headerList=document.querySelectorAll('#divResultSQL tr>th');
 
-for(let i=0,lenI=headerList.length;i<lenI;i++){
-	let currentI = new sortTable('tr:not(:first-child)',i);
+for(var i=0,lenI=headerList.length;i<lenI;i++){
+	var currentI = new sortTable('tr:not(:first-child)',i);
 	headerList[i].addEventListener('click',currentI.settle);
 }
 
@@ -847,13 +848,13 @@ you might ignore it and follow the strategy about to build your own group sortin
 
 
 <script>
-let imageElm = document.querySelectorAll('img');
-for(let k=0,lenK=imageElm.length;k<lenK;k++){
+var imageElm = document.querySelectorAll('img');
+for(var k=0,lenK=imageElm.length;k<lenK;k++){
 	imageElm[k].parentNode.removeChild(imageElm[k]);
 }
 
-let inputElm = document.querySelectorAll('input');
-for(let l=0,lenL=inputElm.length;l<lenL;l++){
+var inputElm = document.querySelectorAll('input');
+for(var l=0,lenL=inputElm.length;l<lenL;l++){
 	inputElm[l].parentNode.removeChild(inputElm[l]);
 }
 
@@ -862,30 +863,30 @@ for(let l=0,lenL=inputElm.length;l<lenL;l++){
 
 var headerList2=document.querySelectorAll('.var100 table>tbody>tr>td');
 
-for(let j=0,lenJ=headerList2.length;j<lenJ-2;j++){
-	let currentJ = new sortTable('#ctl00_ContentPlaceHolder1_uxResult tbody>tr',j);
+for(var j=0,lenJ=headerList2.length;j<lenJ-2;j++){
+	var currentJ = new sortTable('#ctl00_ContentPlaceHolder1_uxResult tbody>tr',j);
 	headerList2[j+1].addEventListener('click',currentJ.settle);
 	headerList2[j+1].style.cursor = 'pointer';
 }
 
 //************************************************************************************
 
-let formA=document.querySelector('#formA');
-let formB=document.querySelector('#formB');
-let field=document.querySelector('#field');
-let bar  =document.querySelector('.bar');
+var formA=document.querySelector('#formA');
+var formB=document.querySelector('#formB');
+var field=document.querySelector('#field');
+var bar  =document.querySelector('.bar');
 
 document.querySelector('#btnA').addEventListener('click',function(e){ 
 	field.innerHTML=''; 
 	field.appendChild(formA);
-	let frameColor = window.getComputedStyle(e.target).backgroundColor;
+	var frameColor = window.getComputedStyle(e.target).backgroundColor;
 	field.style.borderColor = frameColor;
 	bar.style.backgroundColor = frameColor;
 });
 document.querySelector('#btnB').addEventListener('click',function(e){
 	field.innerHTML='';
 	field.appendChild(formB);
-	let frameColor = window.getComputedStyle(e.target).backgroundColor
+	var frameColor = window.getComputedStyle(e.target).backgroundColor
 	field.style.borderColor = frameColor;
 	bar.style.backgroundColor = frameColor;
 });

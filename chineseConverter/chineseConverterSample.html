@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>繁簡轉換測試</title>
+	<meta charset="UTF-8" />
 <style>
 div { margin:10rem 5rem; }
 .btn { background-color:grey; display:inline-block; margin:1rem; padding:0.5rem; color:white; cursor:pointer; border-radius:.2rem;}
@@ -34,12 +35,14 @@ textarea { margin:1rem 0; width:50rem; height:5rem; }
 <script>
 	let trChinese = document.querySelector('#traditionChinese');
 	let spChinese = document.querySelector('#simplifiedChinese');
-	let toSp = new translation('chineseDict/opencc_spC.js');
-	let toTr = new translation('chineseDict/opencc_trC.js');
+	let toSp = new translation('chineseDict/wiki_spC.js');
+	let toTr = new translation('chineseDict/wiki_trC.js');
 
 	document.querySelector('#spBtn').addEventListener('click',toSp.convert.bind(toSp,trChinese,'return'));
 	document.querySelector('#trBtn').addEventListener('click',toTr.convert.bind(toTr,spChinese,'return'));
-	document.querySelector('#default').addEventListener('click',function(){toTr.convert(trChinese); toSp.convert(spChinese);});
+	console.time('version1');
+	document.querySelector('#default').addEventListener('click',function(){ toTr.convert(trChinese); toSp.convert(spChinese); });
+	console.timeEnd('version1');
 
 </script>
 </body>

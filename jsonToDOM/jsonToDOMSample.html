@@ -1,0 +1,485 @@
+<html>
+<head>
+<title>Structure a JSON object in HTML DOM</title>
+
+<meta charset="UTF-8" />
+<style>
+ul                          { cursor:pointer; }
+li[data-leaf]:before 		    { content:attr(data-index)" : "; color:red;}
+li:not([data-leaf]):before 	{ content:"+"; color:green; cursor:pointer; background-color:lightblue; }
+li[data-leaf]:hover         { background: white !important; }
+li:hover ul                 { background: white; }
+li:hover                    { background: lightblue; }
+pre 						            { margin:5vh 10vw; }
+textarea 					          { width:70vw; height:30vh; margin:5vh 10vw;}
+p 							            { margin:0 10vw; }
+</style>
+</head>
+
+<body>
+
+<textarea>[
+  {
+    "_id": "583de7cc2f6137de911e9ae3",
+    "index": 0,
+    "guid": "94ccf0f8-43fe-4035-bd4e-3a15dd1bc47e",
+    "isActive": true,
+    "balance": "$1,754.65",
+    "picture": "http://placehold.it/32x32",
+    "age": 30,
+    "eyeColor": "brown",
+    "name": "Stout Trujillo",
+    "gender": "male",
+    "company": "OPPORTECH",
+    "email": "stouttrujillo@opportech.com",
+    "phone": "+1 (983) 443-3268",
+    "address": "340 Bridgewater Street, Cetronia, Palau, 9720",
+    "about": "Dolore laboris amet voluptate ea. Magna ipsum cillum qui dolore esse amet. Eiusmod velit ut laboris aliquip exercitation laboris cillum aute ullamco dolor laborum cupidatat exercitation. Exercitation sunt non aliqua non nostrud. Occaecat excepteur occaecat in est ipsum Lorem. In laborum ullamco sunt reprehenderit fugiat et adipisicing sunt velit eiusmod eiusmod adipisicing.\r\n",
+    "registered": "2015-02-06T02:48:51 -08:00",
+    "latitude": -89.414075,
+    "longitude": -132.327405,
+    "tags": [
+      "do",
+      "aute",
+      "consectetur",
+      "eu",
+      "ea",
+      "nulla",
+      "voluptate"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Chandler Lester"
+      },
+      {
+        "id": 1,
+        "name": "Mullen Hayes"
+      },
+      {
+        "id": 2,
+        "name": "Estes Ferguson"
+      }
+    ],
+    "greeting": "Hello, Stout Trujillo! You have 3 unread messages.",
+    "favoriteFruit": "strawberry"
+  },
+  {
+    "_id": "583de7cc7b37840002a93d69",
+    "index": 1,
+    "guid": "08259860-480f-4fa8-afb6-63fe06494de0",
+    "isActive": true,
+    "balance": "$3,496.86",
+    "picture": "http://placehold.it/32x32",
+    "age": 25,
+    "eyeColor": "brown",
+    "name": "Opal Johns",
+    "gender": "female",
+    "company": "COMVEYOR",
+    "email": "opaljohns@comveyor.com",
+    "phone": "+1 (995) 426-3035",
+    "address": "149 Harrison Avenue, Homeworth, Federated States Of Micronesia, 2941",
+    "about": "Mollit excepteur laboris ipsum veniam dolore incididunt elit veniam duis. Lorem reprehenderit consequat enim in occaecat. Amet ullamco ex ut excepteur eu. Eu ea ut labore ea aute. Anim occaecat nisi adipisicing cupidatat proident velit.\r\n",
+    "registered": "2014-04-19T03:19:06 -08:00",
+    "latitude": 1.209102,
+    "longitude": 152.412294,
+    "tags": [
+      "officia",
+      "ullamco",
+      "magna",
+      "ullamco",
+      "ullamco",
+      "occaecat",
+      "ex"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Rebecca Page"
+      },
+      {
+        "id": 1,
+        "name": "Alejandra Simpson"
+      },
+      {
+        "id": 2,
+        "name": "Greene Harvey"
+      }
+    ],
+    "greeting": "Hello, Opal Johns! You have 9 unread messages.",
+    "favoriteFruit": "banana"
+  },
+  {
+    "_id": "583de7cc6515a125a394a242",
+    "index": 2,
+    "guid": "097a4753-6672-4574-845d-8a2fb242b87d",
+    "isActive": false,
+    "balance": "$3,123.88",
+    "picture": "http://placehold.it/32x32",
+    "age": 30,
+    "eyeColor": "green",
+    "name": "Barker Leblanc",
+    "gender": "male",
+    "company": "MAGNAFONE",
+    "email": "barkerleblanc@magnafone.com",
+    "phone": "+1 (905) 417-2093",
+    "address": "768 Monroe Street, Elliott, North Dakota, 4733",
+    "about": "Sunt voluptate nulla magna nulla non adipisicing adipisicing cillum eiusmod minim qui qui eiusmod. Ea sint ut irure amet sint labore eiusmod qui deserunt et. Officia officia nulla amet sunt cillum. Adipisicing irure adipisicing sunt est eiusmod Lorem velit est irure in ad. Est magna ullamco qui est aute incididunt. Fugiat voluptate cupidatat non quis reprehenderit.\r\n",
+    "registered": "2014-05-24T11:26:03 -08:00",
+    "latitude": 61.201128,
+    "longitude": -90.81663,
+    "tags": [
+      "magna",
+      "fugiat",
+      "nisi",
+      "exercitation",
+      "duis",
+      "proident",
+      "in"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Barry Reed"
+      },
+      {
+        "id": 1,
+        "name": "Judith Faulkner"
+      },
+      {
+        "id": 2,
+        "name": "Madden Durham"
+      }
+    ],
+    "greeting": "Hello, Barker Leblanc! You have 9 unread messages.",
+    "favoriteFruit": "strawberry"
+  },
+  {
+    "_id": "583de7cc446a0edf36b4ecad",
+    "index": 3,
+    "guid": "ce9b7985-184d-4047-85f0-ff51eaaa26ef",
+    "isActive": false,
+    "balance": "$3,080.98",
+    "picture": "http://placehold.it/32x32",
+    "age": 30,
+    "eyeColor": "brown",
+    "name": "Anne Pugh",
+    "gender": "female",
+    "company": "WRAPTURE",
+    "email": "annepugh@wrapture.com",
+    "phone": "+1 (933) 541-3117",
+    "address": "317 Franklin Street, Dotsero, Montana, 5776",
+    "about": "Id esse cillum excepteur aute id. Sint magna labore pariatur ad dolor laborum magna mollit laborum veniam nisi elit velit. Aliquip pariatur in veniam excepteur elit proident reprehenderit. Exercitation mollit in est ea ut sit velit est duis. Minim in eiusmod esse duis nisi laborum dolore ut do dolor.\r\n",
+    "registered": "2016-03-26T03:43:56 -08:00",
+    "latitude": 9.764447,
+    "longitude": -34.085113,
+    "tags": [
+      "laboris",
+      "occaecat",
+      "ad",
+      "elit",
+      "occaecat",
+      "in",
+      "labore"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Stanton Talley"
+      },
+      {
+        "id": 1,
+        "name": "Hahn English"
+      },
+      {
+        "id": 2,
+        "name": "Moses Moore"
+      }
+    ],
+    "greeting": "Hello, Anne Pugh! You have 10 unread messages.",
+    "favoriteFruit": "strawberry"
+  },
+  {
+    "_id": "583de7ccfec59ccf504e8627",
+    "index": 4,
+    "guid": "010a2162-707b-4be4-a798-69d0fd90198b",
+    "isActive": false,
+    "balance": "$3,593.50",
+    "picture": "http://placehold.it/32x32",
+    "age": 31,
+    "eyeColor": "green",
+    "name": "Caroline Hansen",
+    "gender": "female",
+    "company": "ZOLAR",
+    "email": "carolinehansen@zolar.com",
+    "phone": "+1 (885) 575-2347",
+    "address": "764 Hampton Place, Motley, Virgin Islands, 1753",
+    "about": "Ullamco pariatur elit id officia aliqua. Esse fugiat duis amet laborum Lorem ex ex cupidatat dolor officia excepteur. Quis culpa mollit irure ad do qui esse magna consectetur culpa et. Et id aliqua proident veniam. Mollit Lorem ex fugiat id proident dolore officia proident commodo elit fugiat consequat. Nisi nisi pariatur incididunt incididunt do et incididunt ut tempor.\r\n",
+    "registered": "2014-08-05T07:12:21 -08:00",
+    "latitude": 89.496528,
+    "longitude": -92.063211,
+    "tags": [
+      "officia",
+      "do",
+      "fugiat",
+      "elit",
+      "irure",
+      "Lorem",
+      "ad"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Lora Mcleod"
+      },
+      {
+        "id": 1,
+        "name": "Howell Wilkinson"
+      },
+      {
+        "id": 2,
+        "name": "Poole Benton"
+      }
+    ],
+    "greeting": "Hello, Caroline Hansen! You have 4 unread messages.",
+    "favoriteFruit": "strawberry"
+  },
+  {
+    "_id": "583de7cca6ff24731bd09144",
+    "index": 5,
+    "guid": "eb696d95-e781-4f5e-974c-5991411b4c44",
+    "isActive": true,
+    "balance": "$2,185.74",
+    "picture": "http://placehold.it/32x32",
+    "age": 39,
+    "eyeColor": "green",
+    "name": "Gail Tyler",
+    "gender": "female",
+    "company": "APEXIA",
+    "email": "gailtyler@apexia.com",
+    "phone": "+1 (817) 502-2994",
+    "address": "175 Alton Place, Hemlock, Utah, 8081",
+    "about": "Exercitation consequat excepteur quis aliquip sunt consectetur qui cupidatat dolor ut. Qui magna ea sunt mollit sit nostrud ex consequat amet labore minim. Commodo occaecat sunt irure laboris amet sit aute labore consectetur. Nisi incididunt reprehenderit nulla dolore sit fugiat mollit. Incididunt sit excepteur Lorem Lorem. Consectetur deserunt nisi laborum labore deserunt occaecat in dolore id.\r\n",
+    "registered": "2015-09-06T04:22:01 -08:00",
+    "latitude": -82.541347,
+    "longitude": -158.569366,
+    "tags": [
+      "mollit",
+      "laborum",
+      "deserunt",
+      "consectetur",
+      "nulla",
+      "enim",
+      "in"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Strong Osborne"
+      },
+      {
+        "id": 1,
+        "name": "Allison Morse"
+      },
+      {
+        "id": 2,
+        "name": "Hunt Munoz"
+      }
+    ],
+    "greeting": "Hello, Gail Tyler! You have 7 unread messages.",
+    "favoriteFruit": "banana"
+  },
+  {
+    "_id": "583de7cc52068a31011d3e52",
+    "index": 6,
+    "guid": "1dd86f9a-31ec-4528-9064-c0c71acbfd50",
+    "isActive": false,
+    "balance": "$1,706.13",
+    "picture": "http://placehold.it/32x32",
+    "age": 35,
+    "eyeColor": "blue",
+    "name": "Tonia Mays",
+    "gender": "female",
+    "company": "ISOTERNIA",
+    "email": "toniamays@isoternia.com",
+    "phone": "+1 (976) 441-2411",
+    "address": "863 Meserole Street, Imperial, Nebraska, 7294",
+    "about": "Ad aliqua cillum nulla deserunt. Incididunt cillum dolor est nisi excepteur velit. Nisi cupidatat aliquip adipisicing irure mollit consectetur. Ut occaecat aute esse consectetur cillum adipisicing aliquip aliqua tempor proident cupidatat laborum. Est magna nisi voluptate adipisicing amet.\r\n",
+    "registered": "2015-09-16T10:27:26 -08:00",
+    "latitude": 63.624473,
+    "longitude": 113.096033,
+    "tags": [
+      "laborum",
+      "commodo",
+      "sit",
+      "sint",
+      "fugiat",
+      "laboris",
+      "minim"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Craft Hoover"
+      },
+      {
+        "id": 1,
+        "name": "Lowery Albert"
+      },
+      {
+        "id": 2,
+        "name": "Irwin Lindsey"
+      }
+    ],
+    "greeting": "Hello, Tonia Mays! You have 4 unread messages.",
+    "favoriteFruit": "strawberry"
+  },
+  {
+    "_id": "583de7cca9180eccfe32ac2b",
+    "index": 7,
+    "guid": "d6ee8073-a5fd-44ed-befc-e664f7e106bc",
+    "isActive": true,
+    "balance": "$2,716.91",
+    "picture": "http://placehold.it/32x32",
+    "age": 38,
+    "eyeColor": "blue",
+    "name": "Trevino Lynn",
+    "gender": "male",
+    "company": "ZENTIX",
+    "email": "trevinolynn@zentix.com",
+    "phone": "+1 (844) 592-3487",
+    "address": "569 Elm Place, Deercroft, Northern Mariana Islands, 7233",
+    "about": "Incididunt pariatur eu duis sint voluptate. Amet amet laboris elit aliquip consectetur. Eu sint adipisicing dolor occaecat pariatur sint reprehenderit id. Consequat quis anim consequat tempor ea pariatur ea ad qui ex.\r\n",
+    "registered": "2016-08-06T02:38:01 -08:00",
+    "latitude": -19.757979,
+    "longitude": 120.88721,
+    "tags": [
+      "sunt",
+      "non",
+      "sint",
+      "dolore",
+      "esse",
+      "eu",
+      "dolore"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Gallagher Monroe"
+      },
+      {
+        "id": 1,
+        "name": "Kim Heath"
+      },
+      {
+        "id": 2,
+        "name": "Dixie Stephenson"
+      }
+    ],
+    "greeting": "Hello, Trevino Lynn! You have 5 unread messages.",
+    "favoriteFruit": "banana"
+  },
+  {
+    "_id": "583de7cce53e0ef9f4605134",
+    "index": 8,
+    "guid": "1c0e18d9-6ced-4cfb-b16c-cf42dd5c6d2b",
+    "isActive": false,
+    "balance": "$3,396.64",
+    "picture": "http://placehold.it/32x32",
+    "age": 38,
+    "eyeColor": "blue",
+    "name": "Bond Benjamin",
+    "gender": "male",
+    "company": "ORBALIX",
+    "email": "bondbenjamin@orbalix.com",
+    "phone": "+1 (860) 450-3299",
+    "address": "402 Brightwater Avenue, Ballico, Virginia, 5575",
+    "about": "Id ea aute cillum sit duis pariatur culpa deserunt ad dolor voluptate veniam. In commodo aliquip deserunt excepteur ad veniam consequat culpa exercitation esse ullamco velit magna. Lorem aliqua labore mollit voluptate occaecat.\r\n",
+    "registered": "2014-01-15T08:13:48 -08:00",
+    "latitude": 21.99581,
+    "longitude": 176.879815,
+    "tags": [
+      "excepteur",
+      "ut",
+      "culpa",
+      "nostrud",
+      "do",
+      "cupidatat",
+      "id"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Taylor Mcdowell"
+      },
+      {
+        "id": 1,
+        "name": "Keisha Wagner"
+      },
+      {
+        "id": 2,
+        "name": "Kelsey Mercado"
+      }
+    ],
+    "greeting": "Hello, Bond Benjamin! You have 4 unread messages.",
+    "favoriteFruit": "banana"
+  }
+]</textarea>
+<p id='header'>*Entry JSON,the page will turn it into UL>LI format.</p>
+<ul id='field'></ul>
+
+<script src="./js/jsonToDOM.js"></script>
+<script src="./js/ListWalker.js"></script>
+<script>
+	var textarea = document.querySelector('textarea');
+	var preField	 = document.querySelector('#field');
+	var walker = new ListWalker;
+
+	function reform() {
+		try{
+			//jsonToDOM will sort throught a json,turn it to a UL>LI format.
+			jsonToDOM(JSON.parse(textarea.value),preField);
+		} catch(err){
+			//print out the exception message from JSON.parse;
+			preField.innerText = err.message;
+		}
+		var fields = document.querySelectorAll('ul[data-depth="0"]>li');
+		for(let i=0,lenI=fields.length;i<lenI;i++){
+			//nodeWalker() walk throught every node in fields[i] and use the callback to turn node.style.display to "none".
+			walker.nodeWalker(fields[i],function(node){ node.style.display = "none"; });
+		}
+
+
+
+		var subTrees = document.querySelectorAll('li:not([data-leaf=true])');
+
+		for(let k=0,lenK=subTrees.length,currDisplay=[];k<lenK;k++) {
+		    currDisplay[k] = 'block';
+		    subTrees[k].addEventListener('click',function(e){
+		    	//listedSibling walk through subTrees[k]'s direct children,and toggle their display.
+				walker.listedSibling(subTrees[k],function(node){
+					node.style.display=currDisplay[k];
+				});
+			//Stop bubble
+			e.stopPropagation();
+			//Toggle display.
+		    currDisplay[k]= currDisplay[k]=='none'?'block':'none';
+		  });
+		}
+	}
+
+	//Reform as page load.
+	reform();
+
+	var timer = '';
+	//Reform when textarea has new input,delay 3 second.
+	textarea.addEventListener('input',function(e){	
+		clearTimeout(timer);
+		timer = setTimeout(function(){ 
+			preField.innerHTML=''; 
+			reform();},
+		3000);	
+	})
+</script>
+
+</body>
