@@ -76,7 +76,7 @@ function LiveSession(itemName, requestCall, willUpdateCall, expiry){
         calledResult(
             function(response){
                 willUpdateCall(response);
-                this._setItem(JSON.stringify(calledResult), createdTimestamp);
+                this._setItem(JSON.stringify(response), createdTimestamp);
             }.bind(this)
         )
     }else{
@@ -146,7 +146,7 @@ function LiveLocal(itemName, requestCall, willUpdateCall, expiry){
         calledResult(
             function(response){
                 willUpdateCall(response);
-                this._setItem(JSON.stringify(calledResult), createdTimestamp);
+                this._setItem(JSON.stringify(response), createdTimestamp);
             }.bind(this)
         )
     }else{
